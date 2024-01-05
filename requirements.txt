@@ -1,0 +1,15 @@
+pytube
+opencv-python
+pandas
+numpy
+matplotlib
+supervision
+ultralytics==8.0.20
+pytesseract
+tesseract
+moviepy
+notebook
+playsound
+gtts
+pymysql
+shapely
