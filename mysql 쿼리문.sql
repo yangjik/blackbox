@@ -29,10 +29,9 @@ CREATE TABLE sound(
 
 -- 테이블 생성 이슈 발생 후
 CREATE TABLE sound(
-	file_num VARCHAR(100) PRIMARY KEY,
     txt VARCHAR(200) NOT NULL,
     object VARCHAR(15) NOT NULL,
-    sound_url VARCHAR(200),
+    docker_data VARCHAR(200),
     writer VARCHAR(10) NOT NULL,
     regist_day TIMESTAMP,
     update_day TIMESTAMP
@@ -45,7 +44,7 @@ INSERT INTO sound VALUES ('2', 'ㅁㅁㅁ', '객체', LOAD_FILE('D:/opencv_study
 -- txt 파일
 INSERT INTO sound VALUES ('3', 'ㅅㄷㄴㅅ', '객체', LOAD_FILE('D:/opencv_study/testtxt.txt'), 'root', now(), now());
 -- 깃 링크
-INSERT INTO sound VALUES ('12_24_01', '오른쪽 차 있습니다.', '차', 'https://github.com/yangjik/blackbox/raw/main/sound/voice.mp3', 'root', now(), now());
+INSERT INTO sound VALUES ('12_24_01', '오른쪽 차 있습니다.', '차', NULL, 'root', now(), now());
 
 --  데이터 저장 위치 조회
 show variables like 'datadir';
