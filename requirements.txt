@@ -9,7 +9,7 @@ pytesseract
 tesseract
 moviepy
 notebook
-playsound
+playsound==1.2.2
 gtts
 pymysql
 shapely
