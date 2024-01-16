@@ -48,19 +48,19 @@ def get_dieg_obeg(result_case):
 def docker_download_file(docker_data, download_path, case, dieg, obeg):
     if os.path.exists(download_path):
         return
-    
-    if not docker_data:
+
+    if docker_data:
+        subprocess.run(["docker", "run", "--name", "blackboxsound", "sangho011/blackboxsound:blackbox"])
+        subprocess.run(["docker", "cp", f"blackboxsound:/blackboxsound/{dieg}{obeg}.mp3", "../blackboxsound"])
+        subprocess.run(["docker", "rm", "blackboxsound"])
+
+    else:
         txt_path = case
         tts = gTTS(text=txt_path, lang='ko')
         tts.save(download_path)
         query = 'UPDATE sound SET docker_data = \'O\', writer = \'han\', update_day = now() WHERE txt =\"{}\";'.format(case)
         cur.execute(query)
-        conn.commit()        
-
-    else:
-        subprocess.run(["docker", "run", "--name", "blackboxsound", "sangho011/blackboxsound:blackbox"])
-        subprocess.run(["docker", "cp", f"blackboxsound:/blackboxsound/{dieg}{obeg}.mp3", "../blackboxsound"])
-        subprocess.run(["docker", "rm", "blackboxsound"])
+        conn.commit()
 
 def download_file(dieg, obeg, docker_data, case):
     download_path=f"../blackboxsound/{dieg}{obeg}.mp3"
