@@ -18,7 +18,6 @@ def get_docker_data(di, ob):
     query = 'select docker_data from sound where txt=\"{}\";'.format(case)
     cur.execute(query)
     data = cur.fetchall()
-    conn.commit()
     if data:
         docker_data = data[0][0]
         return docker_data, case
@@ -26,47 +25,41 @@ def get_docker_data(di, ob):
         return None, case
 
 def get_dieg_obeg(result_case):
-  if result_case[0] == "왼쪽":
-    dieg = "left"
-  elif result_case[0] == "오른쪽":
-    dieg = "right"
+    if result_case[0] == "왼쪽":
+        dieg = "left"
+    elif result_case[0] == "오른쪽":
+        dieg = "right"
 
-  if result_case[1] == "사람":
-    obeg = "person"
-  elif result_case[1] == "자전거":
-    obeg = "bicycle"
-  elif result_case[1] == "자동차":
-    obeg = "car"
-  elif result_case[1] == "오토바이":
-    obeg = "motorcycle"
-  elif result_case[1] == "버스":
-    obeg = "bus"
-  elif result_case[1] == "트럭":
-    obeg = "truck"
+    if result_case[1] == "사람":
+        obeg = "person"
+    elif result_case[1] == "자전거":
+        obeg = "bicycle"
+    elif result_case[1] == "자동차":
+        obeg = "car"
+    elif result_case[1] == "오토바이":
+        obeg = "motorcycle"
+    elif result_case[1] == "버스":
+        obeg = "bus"
+    elif result_case[1] == "트럭":
+        obeg = "truck"
 
-  return dieg, obeg
+    return dieg, obeg
 
 def docker_download_file(docker_data, download_path, case, dieg, obeg):
     if os.path.exists(download_path):
         return
     
-    # 데이터가 없으면
     if not docker_data:
         txt_path = case
         tts = gTTS(text=txt_path, lang='ko')
         tts.save(download_path)
-        
+        query = 'UPDATE sound SET docker_data = \'O\', writer = \'han\', update_day = now() WHERE txt =\"{}\";'.format(case)
+        cur.execute(query)
+        conn.commit()        
 
-    # 데이터가 있으면
     else:
-        # 도커이미지상의 경로 지정
-        # 컨테이너 실행
         subprocess.run(["docker", "run", "--name", "blackboxsound", "sangho011/blackboxsound:blackbox"])
-
-        # 컨테이너에서 파일 복사
         subprocess.run(["docker", "cp", f"blackboxsound:/blackboxsound/{dieg}{obeg}.mp3", "../blackboxsound"])
-
-        # 컨테이너 삭제
         subprocess.run(["docker", "rm", "blackboxsound"])
 
 def download_file(dieg, obeg, docker_data, case):
