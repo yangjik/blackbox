@@ -66,7 +66,7 @@ Custom_model : Grounding-Dino, Yolov8 모델의 장점을 둘다 가지고 있�
 - Data EDA(학습시 데이터 버전)<br>
 <img src="./readme_img/data.PNG"><br>
 <br>
-- Train Result(학습 결과)
+- Train Result(학습 결과)<br>
 mAP<br>
 <img src="./readme_img/mAP.PNG"><br>
 
