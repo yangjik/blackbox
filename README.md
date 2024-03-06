@@ -41,8 +41,26 @@
 - 최종
 <img src="./readme_img/line_two.PNG">
 
+
+### Auto Labeling 결과
+---
+<img src="./readme_img/autolabeing.PNG"><br>
+Grounding-Dino : box를 잘 잡는 특징을 가지고 있고,
+Yolov8n : class type를 잘 잡는 특징을 가지고 있다
+Custom_model : Grounding-Dino, Yolov8 모델의 장점을 둘다 가지고 있다.
+
+
+### 워닝존 데모영상
+---
+<img src="./readme_img/시연영상_워닝존.gif"><br>
+간단 설명
+1. 중간 워닝존에 객체가 들어오면 녹색 박스로 변경
+2. 워닝존에 왼쪽에 있는지 오른쪽에 있는지 판별
+3. 화면 중앙 부분에 txt로 안내 및 ex)오른쪽 사람 tts 파일 재생
+파일 미존재시 비프음으로 재생 후 gTTS로 파일 생성 
+
 ### 참고 사이트
 ---
-Grounding-Sam : <https://github.com/IDEA-Research/GroundingDINO>
-Grounding-Dino : <https://github.com/IDEA-Research/Grounded-Segment-Anything>
+Grounding-Sam : <https://github.com/IDEA-Research/GroundingDINO><br>
+Grounding-Dino : <https://github.com/IDEA-Research/Grounded-Segment-Anything><br>
 Custom model : <https://docs.ultralytics.com/ko>
