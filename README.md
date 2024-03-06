@@ -24,25 +24,26 @@
 
 
 테스트 한 모델
-    - Grounding-Sam
-    <img src="./readme_img/sam.PNG">
-        결과 : Segmentation + Bounding_box 
-    - Grounding-Dino
-    <img src="./readme_img/dino.PNG">
-        결과 : Bounding_box
-    - Custom model(초기는 yolov8n model)
-    <img src="./readme_img/yolo.PNG">
-        결과 : Bounding_box
+    - Grounding-Sam<br>
+    <img src="./readme_img/sam.PNG"><br>
+        결과 : Segmentation + Bounding_box <br><br>
+    - Grounding-Dino<br>
+    <img src="./readme_img/dino.PNG"><br>
+        결과 : Bounding_box<br><br>
+    - Custom model(초기는 yolov8n model)<br>
+    <img src="./readme_img/yolo.PNG"><br>
+        결과 : Bounding_box<br><br>
+
+- 초기 : 
+<img src="./readme_img/line_one.PNG">
 
 
-    - 초기 : 
-    <img src="./readme_img/line_one.PNG">
-
-
-    - 최종
-    <img src="./readme_img/line_two.PNG">
+- 최종
+<img src="./readme_img/line_two.PNG">
 
 - 참고 사이트
+
+
 Grounding-Sam : <https://github.com/IDEA-Research/GroundingDINO>
 Grounding-Dino : <https://github.com/IDEA-Research/Grounded-Segment-Anything>
 Custom model : <https://docs.ultralytics.com/ko>
